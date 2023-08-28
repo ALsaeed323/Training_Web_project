@@ -12,6 +12,8 @@ var router = Router();
 //     
 // });
 // */
+
+  
 router.get('/', function(req, res, next) {
   /*req.session.Email = req.query.email;
   req.session.psw = req.query.psw;
@@ -25,7 +27,9 @@ router.get('/', function(req, res, next) {
     res.render("noaccess", { user: (req.session.user === undefined ? "" : req.session.user) });
   }*/
   
-  res.render("index");
+  //res.render("index");
+  
+res.render("homepage");
 
  // res.render("homepage", { user: (req.session.user === undefined ? "" : req.session.user) });
 });

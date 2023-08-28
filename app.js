@@ -5,8 +5,12 @@ import path from "path";
 import { fileURLToPath } from "url";
 import mongoose from"mongoose";
 import session from 'express-session';
+import cookieParser from 'cookie-parser';
+import fileUpload from 'express-fileupload';
+
 
 import homepage_router from "./routes/homepage.js";
+import signup_router from "./routes/signup.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -16,12 +20,23 @@ const PORT = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(session({ secret: 'Your_Secret_Key' }));
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
+
+//database
+app.use(express.urlencoded({ extended: true }));
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs"); // Assuming you're using the EJS view engine
 
 
 app.use('/', homepage_router);
+app.use('/',signup_router);
 
 // /*app.get("/", async (req, res) => {
 //   // render the index page
