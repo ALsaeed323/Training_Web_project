@@ -6,9 +6,7 @@ import { fileURLToPath } from "url";
 import mongoose from"mongoose";
 import session from 'express-session';
 
-
-
-import homepage_router from "./src/routes/homepage.js";
+import homepage_router from "./routes/homepage.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -25,10 +23,10 @@ app.set("view engine", "ejs"); // Assuming you're using the EJS view engine
 
 app.use('/', homepage_router);
 
-/*app.get("/", async (req, res) => {
-  // render the index page
-  res.send('hello');
-});*/
+// /*app.get("/", async (req, res) => {
+//   // render the index page
+//   res.send('hello');
+// });
 
 //
 //mongodb+srv://ahmedmohamed1jan2003:hS8epPZAaglQpiGx@cluster0.4giicn8.mongodb.net/

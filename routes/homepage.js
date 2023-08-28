@@ -12,7 +12,7 @@ var router = Router();
 //     
 // });
 // */
-router.get('/homepage', function(req, res, next) {
+router.get('/', function(req, res, next) {
   /*req.session.Email = req.query.email;
   req.session.psw = req.query.psw;
   req.session.x = 'x';*/
@@ -25,7 +25,7 @@ router.get('/homepage', function(req, res, next) {
     res.render("noaccess", { user: (req.session.user === undefined ? "" : req.session.user) });
   }*/
   
-  res.render("homepage");
+  res.render("index");
 
  // res.render("homepage", { user: (req.session.user === undefined ? "" : req.session.user) });
 });
