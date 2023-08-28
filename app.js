@@ -3,6 +3,12 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import mongoose from"mongoose";
+import session from 'express-session';
+
+
+
+import homepage_router from "./src/routes/homepage.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -16,13 +22,31 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs"); // Assuming you're using the EJS view engine
 
-app.get("/", async (req, res) => {
+
+app.use('/', homepage_router);
+
+/*app.get("/", async (req, res) => {
   // render the index page
   res.send('hello');
-});
+});*/
+
 //
+//mongodb+srv://ahmedmohamed1jan2003:hS8epPZAaglQpiGx@cluster0.4giicn8.mongodb.net/
+//mongodb+srv://ahmed2110223:Bi1rExHxs1QSCUpP@webproject.fve9yw3.mongodb.net/test?retryWrites=true&w=majority
+//mongodb+srv://ahmedmohamed1jan2003:hS8epPZAaglQpiGx@cluster0.4giicn8.mongodb.net/training?retryWrites=true&w=majority
+
+mongoose.connect("mongodb+srv://ahmedmohamed1jan2003:hS8epPZAaglQpiGx@cluster0.4giicn8.mongodb.net/training?retryWrites=true&w=majority")
+.then(()=>{
+
+    console.log(`Example app listening on port ${process.env.PORT}`)
+  })
+.catch((error)=>{
+    console.log("there is error")
+  console.log(error)
+})
 
 app.listen(PORT, hostname, () => {
   console.log(`Server is listening on http://${hostname}:${PORT}`);
 });
 
+export default app;
