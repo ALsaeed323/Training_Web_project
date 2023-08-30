@@ -38,6 +38,7 @@ app.set("view engine", "ejs"); // Assuming you're using the EJS view engine
 app.use('/', homepage_router);
 app.use('/',signup_router);
 
+
 // /*app.get("/", async (req, res) => {
 //   // render the index page
 //   res.send('hello');
