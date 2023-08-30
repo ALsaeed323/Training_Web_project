@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form with Image Upload</title>
 </head>
 <body>
-    <p>hello dashboard</p>
+    <h1>Submit Property</h1>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
