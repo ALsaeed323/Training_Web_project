@@ -1,9 +1,12 @@
 import Signup from "../models/signup_schema.js"
 import bcrypt from 'bcrypt';
+import express from "express";
 
 
+const userRouter = express.Router();
 
-router.post("/signin", async (req, res) => {
+userRouter.post("/signin", async (req, res) => {
+    console.log('hello');
     // Get email and password from the request
     const { email, password } = req.body;
     // Check for email and password in the request

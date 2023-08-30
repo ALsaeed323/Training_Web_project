@@ -2,44 +2,126 @@
 <html>
 <head>
     <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #signin-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            margin-bottom: auto;
+            margin-top: 40px;
+           
+        }
+
+        h1 {
+            text-align: start;
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Sign In</h1>
     <form id="signin-form">
+        <h1>Sign In</h1>
         <label for="email">Email:</label>
-        <input type="email" id="email" required><br>
+        <input type="email" id="signinEmail" required><br>
+        <p id="emailErrorMessage"></p>
         <label for="password">Password:</label>
-        <input type="password" id="password" required><br>
+        <input type="password" id="signinPassword" required><br>
+        <p id="passwordErrorMessage"></p>
         <button type="submit">Sign In</button>
     </form>
     <p id="message"></p>
 
     <script>
-        document.getElementById("signin-form").addEventListener("submit", async function(event) {
-            event.preventDefault();
-
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            const response = await fetch("/signin", {
-                method: "POST",
+        const signinHandler = async (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('signinEmail');
+            const passwordInput = document.getElementById('signinPassword');
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            const response = await fetch('/signin', {
+                method: 'POST',
                 headers: {
-                    "Content-Type": "application/json"
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ email, password }),
             });
-
-            const data = await response.json();
-            const messageElement = document.getElementById("message");
-
-            if (response.ok) {
-                messageElement.textContent = data.message;
-                messageElement.style.color = "green";
-            } else {
-                messageElement.textContent = data.message;
-                messageElement.style.color = "red";
+            var emailErrorMessage = document.getElementById('emailErrorMessage');
+            var passwordErrorMessage = document.getElementById('passwordErrorMessage');
+            if (passwordInput.value !== password) {
+                passwordErrorMessage.textContent = 'You have entered an invalid password';
+                passwordInput.focus();
+                return;
+            } else if (emailInput.value !== email) {
+                emailErrorMessage.textContent = 'You have entered an invalid email';
+                emailInput.focus();
+                return;
             }
-        });
+
+            if (response.status === 200) {
+                window.location.href = '/';
+            } else {
+                const data = await response.json(); // Extract the response body
+                console.log(data);
+                if (data.errorType === 'email') {
+                    emailErrorMessage.textContent = 'Invalid email';
+                    emailInput.focus();
+                } else {
+                    passwordErrorMessage.textContent = 'Invalid password';
+                    passwordInput.focus();
+                }
+            }
+        };
+
+        document.getElementById("signin-form").addEventListener("submit", signinHandler);
     </script>
 </body>
 </html>
