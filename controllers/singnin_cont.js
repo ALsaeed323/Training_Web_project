@@ -1,7 +1,3 @@
-// Assuming you have already imported necessary modules and set up the server
-
-// Import necessary modules
-
 import Signup from "../models/signup_schema.js";
 import bcrypt from 'bcrypt';
 
