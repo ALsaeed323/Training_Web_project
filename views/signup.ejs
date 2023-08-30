@@ -8,10 +8,10 @@
 <body>
     <form onsubmit=""  id="signup" action="/signupform" method="post" >
               
+
         <label for="fullname"  class="lab">Full Name</label><br>
         <input type="text" name="fullname" id="fullname" class="in" placeholder="Full Name" required class="textBox"><br>
         
-    
    
         <label for="mail"  class="lab">Email Address</label>
         <input id="mail" type="email" class="in"  placeholder="Email" name="mail" required class="textBox">
@@ -23,7 +23,6 @@
         <input type="password"  id="password" class="in" placeholder="Password" name="password" required class="textBox">
         <label id="errorpassword"></label>
     
-           
 
         <label for="cpassword"  class="lab">confirm Password</label>
         <input type="password" id="cpassword" class="in" placeholder="Confirm Password" name="cpassword" required class="textBox">
@@ -31,7 +30,7 @@
     
 
 
-
+        
        <input type="hidden" name="Type" value="user" > 
 
         <button class="btn-modal"  id="btn-sub" type="submit">Submit</button>

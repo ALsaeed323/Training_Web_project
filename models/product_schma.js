@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
     id: {
       type: 'string',
-      required: true
+      
     },
     title: {
       type: 'string',

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import session from 'express-session';
+import Products from "../controllers/product_cont.js"
 //import signin from '../models/signup_schema.js'
 var router = Router();
 
@@ -14,28 +15,10 @@ var router = Router();
 // */
 
   
-router.get('/', function(req, res, next) {
-  /*req.session.Email = req.query.email;
-  req.session.psw = req.query.psw;
-  req.session.x = 'x';*/
-
-  //signin.find()
-  
- /* if (!req.session || req.session.user === undefined || req.session.user.Type === 'user') {
-    res.render("homepage", { User: (req.session.user === undefined ? "" : req.session.user) });
-  } else {
-    res.render("noaccess", { user: (req.session.user === undefined ? "" : req.session.user) });
-  }*/
-  
-  //res.render("index");
-  
-res.render("homepage");
-
- // res.render("homepage", { user: (req.session.user === undefined ? "" : req.session.user) });
-});
+router.get('/', Products.getProducts);
 
 
-router.get('/', function(req, res, next) {
+//router.get('/', function(req, res, next) {
 /*
   current_date = datetime.datetime.now()
   threshold_date = current_date - datetime.timedelta(days=2)
@@ -76,10 +59,10 @@ else{
   res.render("noaccess",{ user: (req.session.user === undefined ? "" : req.session.user) })
 }*/
 
-res.render("homepage");
+//res.render("homepage");
 
 
-});
+//});
 
 
   //res.render("homepage",/*{product: result}*/ { user: (req.session.user === undefined ? "" : req.session.user) });

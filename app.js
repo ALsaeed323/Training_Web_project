@@ -12,6 +12,7 @@ import fileUpload from 'express-fileupload';
 import homepage_router from "./routes/homepage.js";
 import signup_router from "./routes/signup.js";
 import signin_router from "./routes/dashboard.js";
+import cart_router from "./routes/cart.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -39,6 +40,7 @@ app.set("view engine", "ejs"); // Assuming you're using the EJS view engine
 app.use('/', homepage_router);
 app.use('/',signup_router);
 app.use('/',signin_router);
+app.use('/',cart_router);
 
 
 // /*app.get("/", async (req, res) => {

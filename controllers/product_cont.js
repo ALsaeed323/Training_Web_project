@@ -67,10 +67,22 @@ const Delete_product = async (req, res) => {
 }
 
 
+const getProducts = async (req, res) => {
+    try {
+        const products = await Product.find({});
+        console.log(products[1]); // Log the second product in the array
+        res.render("homepage",{ item: products});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while fetching products.' });
+    }
+};
+
 const product_cont = {
     Add_Product,
     Update_product,
-    Delete_product
+    Delete_product,
+    getProducts,
 };
 
 export default product_cont;

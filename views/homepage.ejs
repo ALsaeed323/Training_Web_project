@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomePage</title>
+    <style>
+        .devproduct{
+            width: 40px;
+        }
+    </style>
 </head>
 <body>
     <p>Ahmed mohamed</p>
@@ -12,5 +17,14 @@
     <a rel="/updateproduct" href="/updateproduct"><button>Update Product</button></a> 
     <a rel="/deleteproduct" href="/deleteproduct"><button>Delete Product</button></a> 
     <a rel="/addproduct" href="/addproduct"><button>Add Product</button></a> 
+
+    <h1>Welcome to the Homepage</h1>
+    
+    <ul>
+        <% item.forEach(product => { %>
+            <li><%= product.title %><dev class="devproduct"></dev><%= product.price %> <a href="/addcart/<%=product._id%>"><button>addtocart</button></a></li>
+        <% }); %>
+    </ul>
+    
 </body>
 </html>
