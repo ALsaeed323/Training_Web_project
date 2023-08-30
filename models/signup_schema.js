@@ -13,7 +13,7 @@ const SignupSchema = new Schema({
     type: String,
     required: true,
     match: [/\S+@\S+\.\S+/, "is invalid"],
-    unique: true
+    //unique: true
   },
   password: {
     type: String,

@@ -1,12 +1,56 @@
 // Assuming you have already imported necessary modules and set up the server
 
 // Import necessary modules
+
 import Signup from "../models/signup_schema.js";
 import bcrypt from 'bcrypt';
-import express from "express";
+
+const signinform = async (req, res) => {
+  try {
+
+    const email=req.body.logmail
+    const mypassword=req.body.logpassword 
+
+   
+    const user = await Signup.findOne({ mail: email });
+
+    if (user) {
+     
+      const passwordMatch = await bcrypt.compare(mypassword, user.password);
+
+      if (passwordMatch) {
+        console.log("User found and password matched:", user);
+        req.session.User = user;
+        if(req.session.User.Type==='user'){
+        res.redirect("/")
+        }
+    else{
+res.redirect('/dashboard')
+    }
+        
+      } else {
+        console.log("Password mismatch.");
+        
+      }
+    } else {
+      console.log("User not found.");
+      
+    }
+  } catch (error) {
+    console.error("Error during sign-in:", error);
+   
+  }
+};
+
+const exportsignin = {
+  signinform,
+};
+export default exportsignin;
+
+
 
 // Create an Express Router instance
-const userRouter = express();
+/*const userRouter = express();
 
 // Define the POST route for user sign-in
 userRouter.post('/signin', async (req, res) => {
@@ -34,5 +78,5 @@ userRouter.post('/signin', async (req, res) => {
         console.error(err);
         return res.status(500).json({ message: "Internal server error" });
     }
-});
+});*/
 
