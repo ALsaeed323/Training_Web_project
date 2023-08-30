@@ -1,6 +1,10 @@
 import { Router } from 'express';
 import session from 'express-session';
 import  signupform  from '../controllers/signup_cont.js'
+
+
+
+
 //import signin from '../models/signup_schema.js'
 var router = Router();
 
@@ -19,5 +23,11 @@ router.post("/signupform",signupform.signupform)
     res.send('Test Route');
   });
 
+  
+  router.get("/signin", (req, res) => {
+    // Handle rendering the signin page or sending appropriate response
+    res.render("signin");
+  });
+  
 
 export default router;
