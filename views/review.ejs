@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>review</title>
+</head>
+<body>
+    <p>hello review</p>
+    <form action="/addreview/<%=id%>" method="post">
+        <label for="stars"  class="lab">stars</label>
+        <input id="stars" type="" class="in"  placeholder="stars" name="stars" required class="textBox">
+        
+          <div id="result"></div>
+
+  
+        <label for="text"  class="lab">text</label>
+        <input type=""  id="text" class="in" placeholder="text" name="text" required class="textBox">
+        
+
+
+        <button class="btn-modal"  id="btn-sub" type="submit">Submit</button>
+    </form>
+</body>
+</html>
