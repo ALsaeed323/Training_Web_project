@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 
 const productSchema = new Schema({
-    id: {
+    name: {
       type: 'string',
       
     },

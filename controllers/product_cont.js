@@ -4,7 +4,7 @@ import Product from "../models/product_schma.js";
 const Add_Product = async (req,res)=>{
 
     const proudut = new Product ({
-        id: req.body.productId,
+        name: req.body.name,
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,
@@ -25,10 +25,12 @@ const Add_Product = async (req,res)=>{
 }
 
 const Update_product = async (req, res) => {
-    const productId =req.body.productId; 
+    const namee = req.body.name; // 
+    const product = await Product.findOne({ name: namee }); 
+    
 
     try {
-        const updatedProduct = await Product.findByIdAndUpdate(productId, {
+        const updatedProduct = await Product.findByIdAndUpdate(product, {
             title: req.body.title,
             description: req.body.description,
             price: req.body.price,
@@ -50,10 +52,13 @@ const Update_product = async (req, res) => {
 }
 
 const Delete_product = async (req, res) => {
-    const productId =req.body.productId;  
-
+    const namee = req.body.name; // 
+    const product = await Product.findOne({ name: namee }); 
+    
+   
     try {
-        const deletedProduct = await Product.findByIdAndRemove(productId);
+        const deletedProduct = await Product.findByIdAndRemove(product);
+        console.log(namee);
 
         if (!deletedProduct) {
             return res.status(404).json({ message: 'Product not found' });
