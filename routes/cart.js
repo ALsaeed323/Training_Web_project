@@ -1,8 +1,10 @@
 import { Router } from 'express';
 import session from 'express-session';
 import Signup from "../models/signup_schema.js"
+import cart from "../controllers/cart_cont.js"
 var router = Router();
 
+router.get('/cart',cart.getcart );
 
 router.get('/addcart/:id',async function(req, res, next) {
     try{

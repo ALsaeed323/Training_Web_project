@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user's cart</title>
+    <style>
+        .devproduct{
+            width: 40px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <% productsData.forEach(product => { %>
+            <li><%= product.title %><dev class="devproduct"></dev><%= product.price %> <a href="/confirm/<%=product._id%>"><button>confirm</button></a></li>
+        <% }); %>
+    </ul>
+</body>
+</html>
