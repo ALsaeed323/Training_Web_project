@@ -44,7 +44,7 @@ router.post("/search",Search_cont.Search);
     res.render("updateproduct");
   });
   router.get("/search", (req, res) => {
-    res.render("search");
+    res.render('homepage');;
   });
 
 

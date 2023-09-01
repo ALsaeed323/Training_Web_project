@@ -13,6 +13,7 @@ const Search = async (req, res) => {
           { description: { $regex: searchTerm, $options: "i" } }
         ]
       });
+      console.log(`hello  this is the result ${results}` ); 
   
       res.json(results);
     } catch (error) {
