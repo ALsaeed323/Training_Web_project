@@ -28,7 +28,7 @@
     
     <ul>
         <% item.forEach(product => { %>
-            <li><%= product.title %><dev class="devproduct"></dev><%= product.price %> <a href="/addcart/<%=product._id%>"><button>addtocart</button></a><dev class="devproduct"></dev><a href="/review/<%=product._id%>"><button>addreview</button></a></li>
+            <li><%= product.title %><dev class="devproduct"></dev><%= product.price %> <a href="/addcart/<%=product._id%>"><button>addtocart</button></a><dev class="devproduct"></dev><a href="/review/<%=product._id%>"><button>reviews</button></a></li>
         <% }); %>
     </ul>
     <script src="/public/scripts/search.js"></script>

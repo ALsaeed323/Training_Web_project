@@ -11,7 +11,29 @@ router.get('/review/:id',async function(req, res, next) {
     const id=req.params.id;
     console.log('dh el id');
     console.log(id);
-res.render('review',{id:id});
+    const proddata= await Product.findOne({_id:id});
+    console.log('de el prddata');
+console.log(proddata);
+
+const reviews_id=proddata.reviewslist;
+console.log(reviews_id);
+const data=[];
+
+for (const rev_id of reviews_id) {
+  console.log(rev_id);
+  try {
+    const review_data = await Review.findOne({ _id: rev_id });
+    console.log('revieeew');
+    console.log(review_data);
+    if (review_data) {
+      data.push(review_data);
+    }
+  } catch (error) {
+    console.error('Error fetching product:', error);
+  }
+}
+
+res.render('review',{id:id,rev_data:data});
   });
   
 
