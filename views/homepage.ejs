@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
     <title>HomePage</title>
     <style>
         .devproduct{
@@ -11,12 +13,15 @@
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline"  action="/search">
+          <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" href="#" type="submit">Search</button>
+        </form>
+      </nav>
     <p>Ahmed mohamed</p>
     <a rel="/signup" href="/signup"><button>Signup</button></a>
     <a rel="/signin" href="/signin"><button>SignIn</button></a>  
-    <a rel="/updateproduct" href="/updateproduct"><button>Update Product</button></a> 
-    <a rel="/deleteproduct" href="/deleteproduct"><button>Delete Product</button></a> 
-    <a rel="/addproduct" href="/addproduct"><button>Add Product</button></a> 
     <a rel="/cart" href="/cart"><button>cart</button></a>
 
     <h1>Welcome to the Homepage</h1>
@@ -26,6 +31,6 @@
             <li><%= product.title %><dev class="devproduct"></dev><%= product.price %> <a href="/addcart/<%=product._id%>"><button>addtocart</button></a></li>
         <% }); %>
     </ul>
-    
+    <script src="/public/scripts/search.js"></script>
 </body>
 </html>

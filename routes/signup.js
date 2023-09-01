@@ -3,6 +3,7 @@ import session from 'express-session';
 import  signupform  from '../controllers/signup_cont.js'
 import signinform from '../controllers/singnin_cont.js'
 import Product_cont from "../controllers/product_cont.js"
+import Search_cont from "../controllers/search_cont.js"
 
 
 
@@ -25,6 +26,7 @@ router.post("/signinform",signinform.signinform);
 router.post("/addproduct",Product_cont.Add_Product);
 router.post("/deleteproduct",Product_cont.Delete_product);
 router.post("/updateproduct",Product_cont.Update_product);
+router.post("/search",Search_cont.Search);
 
   
   router.get("/signin", (req, res) => {
@@ -41,6 +43,10 @@ router.post("/updateproduct",Product_cont.Update_product);
   router.get("/updateproduct", (req, res) => {
     res.render("updateproduct");
   });
+  router.get("/search", (req, res) => {
+    res.render("search");
+  });
+
 
 
   router.get('/test', function(req, res, next) {
