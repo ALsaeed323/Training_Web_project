@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>review</title>
+    <style>
+        .spacer{
+            height: 60px;
+        }
+        .devproduct{
+            width: 30px;
+        }
+    </style>
 </head>
 <body>
     <p>hello review</p>
@@ -21,5 +29,18 @@
 
         <button class="btn-modal"  id="btn-sub" type="submit">Submit</button>
     </form>
+
+    <dev class="spacer">
+
+        <p>Reviews</p>
+
+        
+    <ul>
+        <% rev_data.forEach(rev => { %>
+            <li><p>Stars:</p><%= rev.stars %><dev class="devproduct"><p> ______ </p><p>The review :</p></dev><%= rev.text %><dev class="devproduct"><p> ______ </p><p>The reviewer:</p></dev><%= rev.username %> </li>
+        <% }); %>
+    </ul>
+
+    </dev>
 </body>
 </html>
