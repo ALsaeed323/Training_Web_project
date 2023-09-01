@@ -43,7 +43,12 @@ const productSchema = new Schema({
       items: {
         type: 'string', // Assuming the images are represented by URLs
       }
-    }
+    },
+
+    reviewslist:[{
+      type: String
+}],
+
 });
 
 
