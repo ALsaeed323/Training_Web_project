@@ -1,4 +1,4 @@
-import Product from "../models/product_schma";
+import Product from "../models/product_schma.js";
 
 
 const Filter=async(req,res)=>{
