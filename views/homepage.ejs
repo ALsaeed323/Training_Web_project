@@ -14,11 +14,15 @@
 </head>
 <body>
     <nav class="navbar navbar-light bg-light">
-        <form class="form-inline"   method="post" action="/search">
+        <form id="searchForm" class="form-inline">
           <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" href="#" type="submit">Search</button>
+
         </form>
+
       </nav>
+      <div id="searchResults"> </div>
+
     <p>Ahmed mohamed</p>
     <a rel="/signup" href="/signup"><button>Signup</button></a>
     <a rel="/signin" href="/signin"><button>SignIn</button></a>  
@@ -31,6 +35,44 @@
             <li><%= product.title %><dev class="devproduct"></dev><%= product.price %> <a href="/addcart/<%=product._id%>"><button>addtocart</button></a><dev class="devproduct"></dev><a href="/review/<%=product._id%>"><button>reviews</button></a></li>
         <% }); %>
     </ul>
-    <script src="/public/scripts/search.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+          // Select the input field by name
+          const searchInput = $("input[name='search']");
+          const searchResults = $("#searchResults");
+
+          // Attach an "input" event handler to the search input
+          searchInput.on("input", async function() {
+            const searchTerm = searchInput.val();
+
+            try {
+              const response = await $.ajax({
+                url: "/search",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ search: searchTerm }),
+              });
+
+              // Clear previous results
+              searchResults.empty();
+
+              // Display search results
+              response.forEach(result => {
+                const resultItem = `<div>${result.name}</div>`;
+                searchResults.append(resultItem);
+              });
+            } catch (error) {
+              console.error("An error occurred while searching.", error);
+            }
+          });
+          
+          // Add a submit event handler for the search form
+          $("#searchForm").submit(function(event) {
+            event.preventDefault(); // Prevent form submission
+            // You can add additional code here if needed
+          });
+        });
+    </script>
 </body>
 </html>
