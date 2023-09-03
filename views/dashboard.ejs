@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form with Image Upload</title>
+    <title>Admin</title>
 </head>
 <body>
     <h1>Hello Admin</h1>
     <a rel="/updateproduct" href="/updateproduct"><button>Update Product</button></a> 
     <a rel="/deleteproduct" href="/deleteproduct"><button>Delete Product</button></a> 
     <a rel="/addproduct" href="/addproduct"><button>Add Product</button></a> 
+    <dev style="height: 20px;">
+
+    </dev>
+    <h3>Oredrs</h3>
+    <dev style="height: 50px;">
+
+    </dev>
+
+    <ul>
+        <% item.forEach(order => { %>
+            <li><%= order.producttitle %><dev style="width: 10px;" class="devproduct"> ___ </dev><%= order.productprice %><dev style="width: 10px;" class="devproduct"> ___ </dev><%= order.status %><dev style="width: 10px;" class="devproduct"> ___ </dev><a href="/done/<%=order._id%>"><button style="color: rgb(255, 255, 255); background-color: green;">Done</button></a> </li>
+        <% }); %>
+    </ul>
+
 </body>
 </html>
