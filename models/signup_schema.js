@@ -33,7 +33,7 @@ const SignupSchema = new Schema({
   cart: [{
         type: String
   }],
-  wishlist:[{
+  orderslist:[{
       type: String
 }],
 }, { timestamps: true });

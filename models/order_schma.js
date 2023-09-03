@@ -4,35 +4,36 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
   status: {
-    type: Boolean,
-    required: true,
+    type: String,
+    
   },
   address: {
     type: String,
-    required: true,
+   
   },
   phone_number: {
     type: String,
-    required: true,
+    
   },
-  products: [
-    {
-      id: {
+  userid: {
+    type: String,
+    
+  },
+  productid: {
         type: String,
-        required: true,
+        
       },
-      title: {
+  producttitle: {
         type: String,
-        required: true,
+        
       },
-      price: {
+  productprice: {
         type: Number,
-        required: true,
+        
       },
-    },
-  ],
+ 
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const Order = mongoose.model('order', orderSchema);
 
 export default Order;

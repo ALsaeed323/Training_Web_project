@@ -14,6 +14,7 @@ import signup_router from "./routes/signup.js";
 import signin_router from "./routes/dashboard.js";
 import cart_router from "./routes/cart.js";
 import review_router from "./routes/review.js";
+import order_router from "./routes/confirm_order.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -43,6 +44,7 @@ app.use('/',signup_router);
 app.use('/',signin_router);
 app.use('/',cart_router);
 app.use('/',review_router);
+app.use('/',order_router);
 
 
 // /*app.get("/", async (req, res) => {

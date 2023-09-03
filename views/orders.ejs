@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+
+    <style>
+        .devproduct{
+            width: 40px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <% orderssData.forEach(order => { %>
+            <li><%= order.producttitle %><dev class="devproduct"></dev><%= order.productprice %><dev class="devproduct"></dev><%= order.status %> </li>
+        <% }); %>
+    </ul>
+
+   <a href="/"><button>OK</button></a>
+</body>
+</html>

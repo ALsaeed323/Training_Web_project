@@ -13,10 +13,12 @@ router.get('/addcart/:id',async function(req, res, next) {
     if (!user) {
         throw new Error('User not found');
     }else{
+      console.log("user found and adding to cart")
         user.cart.push(req.params.id);
         await user.save();
+        req.session.User = user;
 
-        res.render("dashboard");
+        res.redirect("/");
     }
 }catch (error) {
     throw error;

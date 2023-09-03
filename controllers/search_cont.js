@@ -24,4 +24,5 @@ const Search = async (req, res) => {
     Search,
 };
 
+
 export default Search_cont;
