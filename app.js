@@ -67,7 +67,7 @@ mongoose.connect("mongodb+srv://ahmedmohamed1jan2003:hS8epPZAaglQpiGx@cluster0.4
   console.log(error)
 })
 
-app.listen(PORT, hostname, () => {
+app.listen(PORT, () => {
   console.log(`Server is listening on http://${hostname}:${PORT}`);
 });
 
